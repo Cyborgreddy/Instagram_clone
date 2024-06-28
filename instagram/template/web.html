@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Base Page{% endblock title %}
+{% block content %}
+<div class="container container-custom mt-4">
+    <h2 class="text-center">Sign In</h2>
+    <form method="POST" class="mt-4">
+        <div class="text-center mt-2">
+            <a href="{% url 'sign_in' %}">Sign In</a>
+        </div>
+        <div class="text-center mt-3">
+            <a href="{% url 'sign_up' %}">Sign Up</a>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

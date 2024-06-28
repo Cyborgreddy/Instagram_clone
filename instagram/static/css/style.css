@@ -1,0 +1,128 @@
+/* General Page Styles */
+body {
+    padding-top: 70px;
+    background-color: #fafafa; /* Light grey background */
+    font-family: 'Roboto', sans-serif;
+    color: #262626; /* Darker text color for better readability */
+    
+}
+
+.container-custom {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    background-image: url('{% static "images/pexels-pixabay-33109.jpg" %}');
+    background-size: auto;
+    background-position: center;
+}
+
+/* Navbar Styles */
+.navbar-custom {
+    background-color: #ffffff; /* White background for navbar */
+    border-bottom: 1px solid #dbdbdb; /* Light grey border */
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-nav .nav-link {
+    color: #262626; /* Dark text color for better contrast */
+    transition: color 0.3s ease;
+}
+
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-nav .nav-link:hover {
+    color: #000000; /* Black color on hover */
+}
+
+/* Container Styles */
+.container-custom {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); /* Subtle shadow */
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.btn-custom {
+    background-color: #3897f0; /* Instagram blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-custom:hover {
+    background-color: #287dc1; /* Darker blue on hover */
+    transform: translateY(-2px);
+}
+
+/* Form Styles */
+.form-control {
+    border-radius: 4px;
+    border: 1px solid #dbdbdb;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    border-color: #3897f0;
+    box-shadow: 0 0 8px rgba(56, 151, 240, 0.25); /* Light blue shadow */
+}
+
+/* Table Styles */
+.table {
+    background-color: #ffffff;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.table thead th {
+    border-bottom: 2px solid #dbdbdb;
+    background-color: #fafafa; /* Light grey background for headers */
+    font-weight: 600;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Slightly darker grey background on hover */
+}
+
+.table-bordered td, .table-bordered th {
+    border: 1px solid #dbdbdb;
+}
+
+/* Additional Styles */
+h2 {
+    color: #262626; /* Matching header color */
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Additional Adjustments */
+a {
+    color: #3897f0; /* Instagram blue for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.footer-custom {
+    background-color: #fafafa; /* Light grey background */
+    color: #8e8e8e; /* Light grey text */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #dbdbdb;
+}

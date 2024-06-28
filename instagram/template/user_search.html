@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block title %}User Search{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h2 class="section-title">User Search Results</h2>
+    {% if user_query %}
+        <h3>Posts by {{ user_query }}</h3>
+        <div class="posts">
+            {% for post in page_obj_posts %}
+                <div class="post mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.user.username }}</h5>
+                            {% if post.image %}
+                                <img src="{{ post.image.url }}" class="card-img-top img-fluid post-image" alt="Post image">
+                            {% endif %}
+                            <p class="card-text">{{ post.caption|truncatewords:30 }}</p>
+                            <p class="post-date"><small>Posted on {{ post.created_at }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    {% if page_obj_posts.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page_posts=1&user_query={{ user_query }}">&laquo; First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page_posts={{ page_obj_posts.previous_page_number }}&user_query={{ user_query }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <span class="page-link">Page {{ page_obj_posts.number }} of {{ page_obj_posts.paginator.num_pages }}</span>
+                    </li>
+
+                    {% if page_obj_posts.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page_posts={{ page_obj_posts.next_page_number }}&user_query={{ user_query }}">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page_posts={{ page_obj_posts.paginator.num_pages }}&user_query={{ user_query }}">Last &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+
+        <h3>Reels by {{ user_query }}</h3>
+        <div class="reels">
+            {% for reel in page_obj_reels %}
+                <div class="reel mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ reel.user.username }}</h5>
+                            <video controls class="card-img-top img-fluid reel-video">
+                                <source src="{{ reel.video.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <p class="card-text">{{ reel.caption|truncatewords:30 }}</p>
+                            <p class="post-date"><small>Posted on {{ reel.created_at }}</small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            <nav>
+                <ul class="pagination justify-content-center">
+                    {% if page_obj_reels.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page_reels=1&user_query={{ user_query }}">&laquo; First</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page_reels={{ page_obj_reels.previous_page_number }}&user_query={{ user_query }}">Previous</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <span class="page-link">Page {{ page_obj_reels.number }} of {{ page_obj_reels.paginator.num_pages }}</span>
+                    </li>
+
+                    {% if page_obj_reels.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page_reels={{ page_obj_reels.next_page_number }}&user_query={{ user_query }}">Next</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page_reels={{ page_obj_reels.paginator.num_pages }}&user_query={{ user_query }}">Last &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    {% else %}
+        <p>No user found with the provided username.</p>
+    {% endif %}
+</div>
+
+<style>
+    body {
+        background-color: #fafafa;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        color: #262626;
+    }
+    .container {
+        margin-top: 20px;
+        max-width: 600px;
+        margin: auto;
+    }
+    .section-title {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .posts, .reels {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .post, .reel {
+        background: #fff;
+        border: 1px solid #dbdbdb;
+        border-radius: 3px;
+        padding: 10px;
+    }
+    .card {
+        border: none;
+    }
+    .card-body {
+        padding: 0;
+    }
+    .card-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .card-text {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    .post-date {
+        color: #8e8e8e;
+        font-size: 12px;
+    }
+    .pagination {
+        margin-top: 20px;
+    }
+    .pagination .page-item .page-link {
+        color: #0095f6;
+    }
+    .pagination .page-item .page-link:hover {
+        color: #007bb5;
+    }
+    .post-image, .reel-video {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock content %}
