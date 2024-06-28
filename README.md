@@ -34,12 +34,15 @@ This is a Django project that includes functionality for posting and viewing pos
 3. **Install the required packages:**
 
     ```sh
-    pip install -r requirements.txt
+    pip install django
+    pip install django psycopg2 
+    pip install pillow
     ```
 
 4. **Set up the database:**
 
     ```sh
+    py manage.py makemigrations 
     python manage.py migrate
     ```
 
